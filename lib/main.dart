@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,13 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  Color pickerColor = Colors.black;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SlidePicker(
+              pickerColor: Colors.black,
+              onColorChanged: (Color value) {
+                setState(() {
+                  pickerColor = value;
+                });
+              },
+            )
+          ],
         ),
       ),
     );
