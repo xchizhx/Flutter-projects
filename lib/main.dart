@@ -33,54 +33,95 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-              Expanded(
-                flex: 360,
-                  child: Image.network(
-                "https://ichip.ru/images/cache/2023/5/2/q90_718962_55dd37a1453a58112f0f01b5f.jpeg",
-                    fit: BoxFit.fitHeight,
-              )),
-
-          Expanded(
-            flex: 440,
+      body: Stack(children: [
+        SingleChildScrollView(
+          child: Expanded(
             child: Column(
               children: [
-                Text("Смартфон Huawei Nova 11i"),
-                Expanded(
-                  child: Stack(
-                    children: [
-                      Text(
-                          "Смартфон HUAWEI nova 11i оснащен полноэкранным IPS-дисплеем диагональю 6.8 дюймов, что удобно для просмотра фильмов, фотографий, игр или приложений. Тонкий корпус черного цвета изготовлен из прочного пластика, устойчивого к воздействию внешних факторов. Благодаря 8-ядерному процессору и 8 ГБ оперативной памяти, загрузка данных осуществляется с высокой скоростью. Частота экрана 90 Гц обеспечивает плавный переход и смену картинки.Смартфон HUAWEI nova 11i имеет камеру 48+2 Мп, с помощью которой можно делать четкие и детализированные изображения при разном уровне освещенности. Слот для карт рассчитан на две SIM, что удобно для разделения личных или рабочих разговоров. Объема памяти на 128 ГБ достаточно для хранения большого количества информации. Батарея мощностью 40 Вт поддерживает быструю зарядку и рассчитана на длительную работу.",
+                Image.network(
+                  "https://ichip.ru/images/cache/2023/5/2/q90_718962_55dd37a1453a58112f0f01b5f.jpeg",
+                  fit: BoxFit.fitHeight,
+                  height: 360,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 28),
+                  child: Text("Смартфон Huawei Nova 11i",
+                      style: TextStyle(fontSize: 22)),
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 25, left: 18, right: 18),
+                      child: Text(
+                        "Смартфон HUAWEI nova 11i оснащен полноэкранным IPS-дисплеем диагональю 6.8 дюймов, что удобно для просмотра фильмов, фотографий, игр или приложений. Тонкий корпус черного цвета изготовлен из прочного пластика, устойчивого к воздействию внешних факторов. Благодаря 8-ядерному процессору и 8 ГБ оперативной памяти, загрузка данных осуществляется с высокой скоростью. Частота экрана 90 Гц обеспечивает плавный переход и смену картинки.Смартфон HUAWEI nova 11i имеет камеру 48+2 Мп, с помощью которой можно делать четкие и детализированные изображения при разном уровне освещенности. Слот для карт рассчитан на две SIM, что удобно для разделения личных или рабочих разговоров. Объема памяти на 128 ГБ достаточно для хранения большого количества информации. Батарея мощностью 40 Вт поддерживает быструю зарядку и рассчитана на длительную работу.",
+                        style:
+                            TextStyle(color: Color.fromARGB(255, 22, 22, 22)),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: OutlinedButton(
-                            onPressed: () {
-                              showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) {
-                                    return Column(
-                                      children: [
-
-                                      ],
-                                    );
-                                  });
-                            },
-                            child: Text("Купить")),
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
                 )
               ],
             ),
-          )],
-      ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 119,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                  Color.fromARGB(0, 255, 255, 255),
+                  Color.fromARGB(255, 255, 255, 255)
+                ])),
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: 18, top: 48, right: 18, bottom: 23),
+            child: OutlinedButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          width: double.infinity,
+                          height: 161,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: 18, top: 26, right: 18),
+                                child: OutlinedButton(
+                                    onPressed: () {},
+                                    style: OutlinedButton.styleFrom(
+                                        minimumSize: Size(double.infinity, 48)),
+                                    child: Text("Добавить в корзину")),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: 18, top: 13, right: 18, bottom: 26),
+                                child: OutlinedButton(
+                                    onPressed: () {},
+                                    style: OutlinedButton.styleFrom(
+                                        minimumSize: Size(double.infinity, 48)),
+                                    child: Text("Купить в один клик")),
+                              )
+                            ],
+                          ),
+                        );
+                      });
+                },
+                style: OutlinedButton.styleFrom(
+                    minimumSize: Size(double.infinity, 48)),
+                child: Text("Купить")),
+          ),
+        ),
+      ]),
     );
   }
 }
